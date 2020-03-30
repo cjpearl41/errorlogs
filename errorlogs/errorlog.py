@@ -15,8 +15,10 @@ def readfile():
     y=""
     component=[]
     count=0
+    #A for loop for checking if there is an error in lines
     for i in range(0,len(lines)):
         if str in lines[i]:
+        #Checks if index lines is in words, and if not, it adds it
             if lines[i] not in words:
                 words.append(lines[i].split())
     for i in words:
@@ -25,6 +27,7 @@ def readfile():
         print("pid=",pid, )
         print("tid=",tid, ) 
         print("i[6]=",i[6], )
+        #Checks for an exception in words based on i and prints it
         if "Exception" in i[6]:
             ex=i[6]
             print("ex=",ex, )
@@ -40,10 +43,12 @@ def readfile():
             print("\n")
             li=i[6].split(".")
             print(li[2])
+            #Adds the exception to s if it isn't already
             if i not in s:
                 s.append(i)
             del li[:]
             del s[:]
+            #Prints the error details
         else:
             if i not in s:
                 s.append(i)
@@ -55,6 +60,7 @@ def readfile():
             x=consplit(li)
             print("\nComponent:",x)
             temp=x
+            #Prints the different information of where the error is
             print("temp=",temp, )      
             print("File:",li[-3],".java")
             print("Function:",li[-2],"()")
@@ -70,6 +76,7 @@ def readfile():
                 if li[-1][x].isdigit():
                     print(li[-1][x], )
             print()
+            #Counts the number of errors
             count=count+1
         if ex in l.keys():
             l.update({ex:count})
